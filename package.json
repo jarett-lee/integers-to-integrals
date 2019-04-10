@@ -1,0 +1,19 @@
+{
+  "name": "integers-to-integrals",
+  "version": "1.0.0",
+  "description": "A hobby JavaScript math library for arbitrary precision calculations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarett-lee/integers-to-integrals.git"
+  },
+  "author": "Jarett Lee <jarett.lee.pi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarett-lee/integers-to-integrals/issues"
+  },
+  "homepage": "https://github.com/jarett-lee/integers-to-integrals#readme"
+}
