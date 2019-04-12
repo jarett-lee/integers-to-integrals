@@ -14,10 +14,10 @@
 
     <script type="module" class="mocha-init">
       mocha.setup('bdd');
+      mocha.checkLeaks();
     </script>
     <script type="module" src="./js/tests/sum.test.js"></script>
     <script type="module" class="mocha-exec">
-      mocha.checkLeaks();
       mocha.run();
     </script>
   </body>
