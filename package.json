@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/jarett-lee/integers-to-integrals/issues"
   },
-  "homepage": "https://github.com/jarett-lee/integers-to-integrals#readme"
+  "homepage": "https://github.com/jarett-lee/integers-to-integrals#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "prettier": "^1.16.4",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {}
 }
