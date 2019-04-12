@@ -1,7 +1,7 @@
-import sum from '../lib/sum.js'
-
-describe('sum', function() {
-    it('should return sum of arguments', function() {
+import sum from '../lib/sum.js';
+describe('sum', function () {
+    it('should return sum of arguments', function () {
         chai.expect(sum(1, 2)).to.equal(3);
     });
 });
+//# sourceMappingURL=sum.test.js.map

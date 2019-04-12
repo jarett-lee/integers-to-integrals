@@ -1,3 +1,6 @@
+
+/docs/js/**/*.js.map
+
 # Logs
 logs
 *.log

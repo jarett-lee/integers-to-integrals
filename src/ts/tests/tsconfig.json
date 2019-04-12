@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "strict": true,
+        "sourceMap": true,
+        "outDir": "../../../docs/js"
+    },
+    "compileOnSave": true
+}

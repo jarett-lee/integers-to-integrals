@@ -1,2 +1,2 @@
-
-import "./sum.test.js"
+import "./sum.test.js";
+//# sourceMappingURL=run.js.map
