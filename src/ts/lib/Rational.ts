@@ -9,12 +9,12 @@ class Rational {
         this.sign = BigIntLib.sign(p) * BigIntLib.sign(q);
 
         const gcd = BigIntLib.gcd(p, q);
-        this.p = (BigInt(this.sign) * BigIntLib.abs(p)) / gcd;
+        this.p = BigIntLib.abs(p) / gcd;
         this.q = BigIntLib.abs(q) / gcd;
     }
 
     numerator() {
-        return this.p;
+        return BigInt(this.sign) * this.p;
     }
 
     denominator() {
