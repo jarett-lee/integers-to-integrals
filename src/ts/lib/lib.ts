@@ -11,6 +11,11 @@ function gcdUnsafe(a: bigint, b: bigint): bigint {
     return gcdUnsafe(b, a % b);
 }
 
-export function abs(a: bigint) {
+export function abs(a: bigint): bigint {
     return a < 0 ? -a : a;
+}
+
+export function sign(a: bigint): number {
+    if (a === 0n) return 0;
+    return a < 0 ? -1 : 1;
 }
