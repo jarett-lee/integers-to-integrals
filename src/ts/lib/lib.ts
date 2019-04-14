@@ -1,5 +1,6 @@
 export function gcd(a: bigint, b: bigint): bigint {
-    if (a < 0 || b < 0) throw new TypeError('Arguments must be positive');
+    a = abs(a);
+    b = abs(b);
     if (a > b) return gcdUnsafe(a, b);
     else if (a < b) return gcdUnsafe(b, a);
     else return a; /* if (a === b) */
