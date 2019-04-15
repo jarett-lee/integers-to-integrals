@@ -3,6 +3,9 @@ import * as BigIntLib from './lib.js';
 class Rational {
     private sign: number;
 
+    static ZERO = new Rational(0n, 1n);
+    static ONE = new Rational(1n, 1n);
+
     constructor(private p: bigint, private q: bigint) {
         if (q === 0n) throw new RangeError('Division by zero');
 
@@ -78,15 +81,20 @@ class Rational {
     }
 
     static mul(a: Rational, b: Rational): Rational {
-        throw new Error('Not implemented');
+        const sign = BigInt(a.sign * b.sign);
+        return new Rational(sign * a.p * b.p, a.q * b.q);
     }
 
     static div(a: Rational, b: Rational): Rational {
-        throw new Error('Not implemented');
+        const sign = BigInt(a.sign * b.sign);
+        return new Rational(sign * a.p * b.q, a.q * b.p);
     }
 
-    static pow(a: Rational, b: Rational): Rational {
-        throw new Error('Not implemented');
+    static pow(a: Rational, b: bigint): Rational {
+        if (b === 0n) return new Rational(1n, 1n);
+        const r = new Rational(a.p ** b, a.q ** b);
+        r.sign = b % 2n === 0n ? 1 : a.sign;
+        return r;
     }
 }
 
