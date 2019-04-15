@@ -68,21 +68,13 @@ class Rational {
     }
 
     static add(a: Rational, b: Rational): Rational {
-        const gcd = BigIntLib.gcd(a.q, b.q);
-        const lcm = (a.q * b.q) / gcd;
-        const aMult = lcm / a.q;
-        const bMult = lcm / b.q;
-        const r = new Rational(BigInt(a.sign) * a.p * aMult + BigInt(b.sign) * b.p * bMult, lcm);
-        return r;
+        const numerator = BigInt(a.sign) * a.p * b.q + BigInt(b.sign) * b.p * a.q;
+        return new Rational(numerator, a.q * b.q);
     }
 
     static sub(a: Rational, b: Rational): Rational {
-        const gcd = BigIntLib.gcd(a.q, b.q);
-        const lcm = (a.q * b.q) / gcd;
-        const aMult = lcm / a.q;
-        const bMult = lcm / b.q;
-        const r = new Rational(BigInt(a.sign) * a.p * aMult - BigInt(b.sign) * b.p * bMult, lcm);
-        return r;
+        const numerator = BigInt(a.sign) * a.p * b.q - BigInt(b.sign) * b.p * a.q;
+        return new Rational(numerator, a.q * b.q);
     }
 
     static mul(a: Rational, b: Rational): Rational {
