@@ -190,9 +190,15 @@ describe('Rational', function() {
             rationalEq(Rational.sub(r2, r1), 1n, 2n);
             rationalEq(Rational.sub(r1, r2), -1n, 2n);
             rationalEq(Rational.sub(r2, r2), 0n, 1n);
-            rationalEq(Rational.sub(r2, r3), 1n, 4n);
+            rationalEq(Rational.sub(r2, r3), -1n, 4n);
             rationalEq(Rational.sub(r3, r4), 15n - 36n, 20n);
             rationalEq(Rational.sub(r4, r3), 36n - 15n, 20n);
+        });
+
+        it('should return difference of negatives', function() {
+            rationalEq(Rational.sub(new Rational(-1n, 2n), new Rational(-1n, 2n)), 0n, 1n);
+            rationalEq(Rational.sub(new Rational(1n, 2n), new Rational(-1n, 2n)), 1n, 1n);
+            rationalEq(Rational.sub(new Rational(-1n, 2n), new Rational(1n, 2n)), -1n, 1n);
         });
     });
 

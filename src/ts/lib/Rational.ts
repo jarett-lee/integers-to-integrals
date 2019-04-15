@@ -68,11 +68,21 @@ class Rational {
     }
 
     static add(a: Rational, b: Rational): Rational {
-        throw new Error('Not implemented');
+        const gcd = BigIntLib.gcd(a.q, b.q);
+        const lcm = (a.q * b.q) / gcd;
+        const aMult = lcm / a.q;
+        const bMult = lcm / b.q;
+        const r = new Rational(BigInt(a.sign) * a.p * aMult + BigInt(b.sign) * b.p * bMult, lcm);
+        return r;
     }
 
     static sub(a: Rational, b: Rational): Rational {
-        throw new Error('Not implemented');
+        const gcd = BigIntLib.gcd(a.q, b.q);
+        const lcm = (a.q * b.q) / gcd;
+        const aMult = lcm / a.q;
+        const bMult = lcm / b.q;
+        const r = new Rational(BigInt(a.sign) * a.p * aMult - BigInt(b.sign) * b.p * bMult, lcm);
+        return r;
     }
 
     static mul(a: Rational, b: Rational): Rational {
