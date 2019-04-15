@@ -21,6 +21,52 @@ class Rational {
         return this.q;
     }
 
+    static eq(a: Rational, b: Rational): boolean {
+        return a.sign === b.sign && Rational.eqAbs(a, b);
+    }
+
+    static eqAbs(a: Rational, b: Rational): boolean {
+        return a.p === b.p && a.q === b.q;
+    }
+
+    static gte(a: Rational, b: Rational): boolean {
+        if (a.sign > b.sign) return true;
+        if (a.sign < b.sign) return false;
+        if (a.sign >= 0) return Rational.gteAbs(a, b);
+        return !Rational.gtAbs(a, b);
+    }
+
+    static gt(a: Rational, b: Rational): boolean {
+        if (a.sign > b.sign) return true;
+        if (a.sign < b.sign) return false;
+        if (a.sign >= 0) return Rational.gtAbs(a, b);
+        return !Rational.gteAbs(a, b);
+    }
+
+    static gteAbs(a: Rational, b: Rational): boolean {
+        return a.p * b.q >= b.p * a.q;
+    }
+
+    static gtAbs(a: Rational, b: Rational): boolean {
+        return a.p * b.q > b.p * a.q;
+    }
+
+    static lte(a: Rational, b: Rational): boolean {
+        return !Rational.gt(a, b);
+    }
+
+    static lt(a: Rational, b: Rational): boolean {
+        return !Rational.gte(a, b);
+    }
+
+    static lteAbs(a: Rational, b: Rational): boolean {
+        return !Rational.gtAbs(a, b);
+    }
+
+    static ltAbs(a: Rational, b: Rational): boolean {
+        return !Rational.gteAbs(a, b);
+    }
+
     static add(a: Rational, b: Rational): Rational {
         throw new Error('Not implemented');
     }

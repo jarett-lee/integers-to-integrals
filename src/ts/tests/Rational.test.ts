@@ -27,6 +27,132 @@ describe('Rational', function() {
         });
     });
 
+    describe('eq', function() {
+        it('should be correct', function() {
+            chai.expect(Rational.eq(new Rational(0n, 1n), new Rational(0n, 1n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(0n, 1n), new Rational(1n, 1n))).to.be.false;
+            chai.expect(Rational.eq(new Rational(0n, 1n), new Rational(-1n, 1n))).to.be.false;
+
+            chai.expect(Rational.eq(new Rational(1n, 1n), new Rational(1n, 1n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(1n, 1n), new Rational(2n, 1n))).to.be.false;
+            chai.expect(Rational.eq(new Rational(1n, 5n), new Rational(1n, 5n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(1n, 5n), new Rational(2n, 5n))).to.be.false;
+            chai.expect(Rational.eq(new Rational(9n, 5n), new Rational(9n, 5n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(9n, 5n), new Rational(4n, 5n))).to.be.false;
+
+            chai.expect(Rational.eq(new Rational(-1n, 1n), new Rational(-1n, 1n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(-1n, 1n), new Rational(-2n, 1n))).to.be.false;
+            chai.expect(Rational.eq(new Rational(-1n, 5n), new Rational(-1n, 5n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(-1n, 5n), new Rational(-2n, 5n))).to.be.false;
+            chai.expect(Rational.eq(new Rational(-9n, 5n), new Rational(-9n, 5n))).to.be.true;
+            chai.expect(Rational.eq(new Rational(-9n, 5n), new Rational(-4n, 5n))).to.be.false;
+        });
+    });
+
+    describe('gte', function() {
+        it('should be correct', function() {
+            chai.expect(Rational.gte(new Rational(0n, 1n), new Rational(0n, 1n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(0n, 1n), new Rational(1n, 1n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(0n, 1n), new Rational(-1n, 1n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(0n, 1n), new Rational(2n, 5n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(0n, 1n), new Rational(-2n, 5n))).to.be.true;
+
+            chai.expect(Rational.gte(new Rational(1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(1n, 2n), new Rational(1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gte(new Rational(-1n, 2n), new Rational(-5n, 6n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(-5n, 6n), new Rational(-1n, 2n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(-1n, 2n), new Rational(-1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gte(new Rational(1n, 2n), new Rational(-5n, 6n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gte(new Rational(1n, 2n), new Rational(-1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gte(new Rational(-1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(-5n, 6n), new Rational(1n, 2n))).to.be.false;
+            chai.expect(Rational.gte(new Rational(-1n, 2n), new Rational(1n, 2n))).to.be.false;
+        });
+    });
+
+    describe('gt', function() {
+        it('should be correct', function() {
+            chai.expect(Rational.gt(new Rational(0n, 1n), new Rational(0n, 1n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(0n, 1n), new Rational(1n, 1n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(0n, 1n), new Rational(-1n, 1n))).to.be.true;
+            chai.expect(Rational.gt(new Rational(0n, 1n), new Rational(2n, 5n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(0n, 1n), new Rational(-2n, 5n))).to.be.true;
+
+            chai.expect(Rational.gt(new Rational(1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gt(new Rational(1n, 2n), new Rational(1n, 2n))).to.be.false;
+
+            chai.expect(Rational.gt(new Rational(-1n, 2n), new Rational(-5n, 6n))).to.be.true;
+            chai.expect(Rational.gt(new Rational(-5n, 6n), new Rational(-1n, 2n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(-1n, 2n), new Rational(-1n, 2n))).to.be.false;
+
+            chai.expect(Rational.gt(new Rational(1n, 2n), new Rational(-5n, 6n))).to.be.true;
+            chai.expect(Rational.gt(new Rational(5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gt(new Rational(1n, 2n), new Rational(-1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gt(new Rational(-1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(-5n, 6n), new Rational(1n, 2n))).to.be.false;
+            chai.expect(Rational.gt(new Rational(-1n, 2n), new Rational(1n, 2n))).to.be.false;
+        });
+    });
+
+    describe('gteAbs', function() {
+        it('should be correct', function() {
+            chai.expect(Rational.gteAbs(new Rational(0n, 1n), new Rational(0n, 1n))).to.be.true;
+            chai.expect(Rational.gteAbs(new Rational(0n, 1n), new Rational(1n, 1n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(0n, 1n), new Rational(-1n, 1n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(0n, 1n), new Rational(2n, 5n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(0n, 1n), new Rational(-2n, 5n))).to.be.false;
+
+            chai.expect(Rational.gteAbs(new Rational(1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gteAbs(new Rational(1n, 2n), new Rational(1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gteAbs(new Rational(-1n, 2n), new Rational(-5n, 6n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(-5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gteAbs(new Rational(-1n, 2n), new Rational(-1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gteAbs(new Rational(1n, 2n), new Rational(-5n, 6n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gteAbs(new Rational(1n, 2n), new Rational(-1n, 2n))).to.be.true;
+
+            chai.expect(Rational.gteAbs(new Rational(-1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gteAbs(new Rational(-5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gteAbs(new Rational(-1n, 2n), new Rational(1n, 2n))).to.be.true;
+        });
+    });
+
+    describe('gtAbs', function() {
+        it('should be correct', function() {
+            chai.expect(Rational.gtAbs(new Rational(0n, 1n), new Rational(0n, 1n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(0n, 1n), new Rational(1n, 1n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(0n, 1n), new Rational(-1n, 1n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(0n, 1n), new Rational(2n, 5n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(0n, 1n), new Rational(-2n, 5n))).to.be.false;
+
+            chai.expect(Rational.gtAbs(new Rational(1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gtAbs(new Rational(1n, 2n), new Rational(1n, 2n))).to.be.false;
+
+            chai.expect(Rational.gtAbs(new Rational(-1n, 2n), new Rational(-5n, 6n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(-5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gtAbs(new Rational(-1n, 2n), new Rational(-1n, 2n))).to.be.false;
+
+            chai.expect(Rational.gtAbs(new Rational(1n, 2n), new Rational(-5n, 6n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(5n, 6n), new Rational(-1n, 2n))).to.be.true;
+            chai.expect(Rational.gtAbs(new Rational(1n, 2n), new Rational(-1n, 2n))).to.be.false;
+
+            chai.expect(Rational.gtAbs(new Rational(-1n, 2n), new Rational(5n, 6n))).to.be.false;
+            chai.expect(Rational.gtAbs(new Rational(-5n, 6n), new Rational(1n, 2n))).to.be.true;
+            chai.expect(Rational.gtAbs(new Rational(-1n, 2n), new Rational(1n, 2n))).to.be.false;
+        });
+    });
+
     describe('add', function() {
         it('should return sum of positives', function() {
             const r1 = new Rational(0n, 1n);
